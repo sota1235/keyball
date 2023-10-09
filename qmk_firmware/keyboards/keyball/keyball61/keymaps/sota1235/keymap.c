@@ -58,9 +58,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [4] = LAYOUT_universal(
       _______  , _______  , _______  , _______  , _______  , _______  ,                                  _______  , _______  , _______  , _______  , _______  , _______  ,
       _______  , _______  , _______  , _______  , _______  , _______  ,                                  _______  , KC_LEFT  , KC_UP    , KC_RGHT  , _______  , _______  ,
-      _______  , _______  , _______  , _______  , _______  , _______  ,                                  CPI_D1K  , KC_BTN1  , KC_DOWN  , KC_BTN2  , KBC_SAVE , KBC_RST  ,
-      _______  , _______  , SCRL_DVD , SCRL_DVI , SCRL_MO  , SCRL_TO  , EE_CLR  ,            EE_CLR    , KC_HOME  , KC_PGDN  , KC_PGUP  , KC_END   , _______  , _______  ,
-      QK_BOOT  , _______  , KC_LEFT  , KC_DOWN  , KC_UP    , KC_RGHT  , _______ ,            _______   , KC_BSPC  , _______  , _______  , _______  , _______  , QK_BOOT
+      _______  , _______  , _______  , _______  , _______  , _______  ,                                  _______  , KC_BTN1  , KC_DOWN  , KC_BTN2  , _______  , _______  ,
+      _______  , _______  , _______  , _______  , _______  , _______  , _______ ,            _______   , _______  , _______  , _______  , _______  , _______  , _______  ,
+      _______  , _______  , _______  , _______  , _______  , _______  , _______ ,            _______   , _______  , _______  , _______  , _______  , _______  , _______
   ),
 };
 // clang-format on
@@ -80,6 +80,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             break;
     }
     return state;
+}
+
+void pointing_device_init_user(void) {
+    // set_auto_mouse_layer(<mouse_layer>); // only required if AUTO_MOUSE_DEFAULT_LAYER is not set to index of <mouse_layer>
+    set_auto_mouse_enable(true); // always required before the auto mouse feature will work
 }
 
 #ifdef OLED_ENABLE
